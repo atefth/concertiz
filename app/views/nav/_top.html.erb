@@ -12,13 +12,18 @@
 		</ul>
 
 		<ul class="nav navbar-nav pull-right">
-			<li class="<%= 'active' if @page == 'login' %>">
 			<% if user_signed_in? %>
-				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-			<% else %>
-				<%= link_to('Login', new_user_session_path) %>
-			<% end %>
+			<li class="<%= 'active' if @page == 'profile' %>">
+				<%= link_to('Profile', profile_path(current_user)) %>
 			</li>
+			<li>
+				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+			</li>
+			<% else %>
+			<li class="<%= 'active' if @page == 'login' %>">
+				<%= link_to('Login', new_user_session_path) %>
+			</li>
+			<% end %>
 		</ul>
 
 	</div>
