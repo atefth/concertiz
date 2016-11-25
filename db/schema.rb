@@ -19,16 +19,17 @@ ActiveRecord::Schema.define(version: 20161125214302) do
     t.time     "start_time"
     t.time     "end_time"
     t.integer  "seats"
+    t.float    "ticket_price"
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "concert_id"
     t.integer  "user_id"
     t.float    "price"
-    t.datetime "issued",     default: '2016-11-25 21:45:00', null: false
+    t.datetime "issued",     default: '2016-11-25 21:55:31', null: false
     t.datetime "expired"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
