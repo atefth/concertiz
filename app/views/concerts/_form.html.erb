@@ -1,0 +1,67 @@
+<%= form_for(concert, html: {role: 'form', class: 'form-horizontal'}) do |f| %>
+<% if concert.errors.any? %>
+<div id="error_explanation">
+  <h3><%= pluralize(concert.errors.count, "error") %> prohibited this concert from being saved:</h3>
+
+  <ul>
+    <% concert.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :title, class: 'sr-only' %><br />
+    <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: 'Title' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :artist, class: 'sr-only' %><br />
+    <%= f.text_field :artist, class: 'form-control', placeholder: 'Artist' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :location, class: 'sr-only' %><br />
+    <%= f.text_field :location, class: 'form-control', placeholder: 'Location' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-2 col-lg-offset-3">
+  <%= f.label :start_time, style: 'margin-top: 5px;' %><br />
+  </div>
+  <div class="col-lg-4">
+    <%= f.time_field :start_time, class: 'form-control', placeholder: 'Start Time' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-2 col-lg-offset-3">
+  <%= f.label :end_time, style: 'margin-top: 5px;' %><br />
+  </div>
+  <div class="col-lg-4">
+    <%= f.time_field :end_time, class: 'form-control', placeholder: 'End Time' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-2 col-lg-offset-3">
+    <%= f.label :date %><br />
+  </div>
+  <div class="col-lg-4">
+    <%= f.date_field :date, class: 'form-control', placeholder: 'Date' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
+  </div>
+</div>
+<% end %>
