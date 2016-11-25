@@ -33,8 +33,25 @@
 </div>
 
 <div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :seats, class: 'sr-only' %><br />
+    <%= f.number_field :seats, class: 'form-control', placeholder: 'Seats' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :ticket_price, class: 'sr-only' %><br />
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <%= f.number_field :ticket_price, class: 'form-control', placeholder: 'Ticket Price', step: :any %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
   <div class="col-lg-2 col-lg-offset-3">
-  <%= f.label :start_time, style: 'margin-top: 5px;' %><br />
+    <%= f.label :start_time, style: 'margin-top: 5px;' %><br />
   </div>
   <div class="col-lg-4">
     <%= f.time_field :start_time, class: 'form-control', placeholder: 'Start Time' %>
@@ -43,7 +60,7 @@
 
 <div class="form-group">
   <div class="col-lg-2 col-lg-offset-3">
-  <%= f.label :end_time, style: 'margin-top: 5px;' %><br />
+    <%= f.label :end_time, style: 'margin-top: 5px;' %><br />
   </div>
   <div class="col-lg-4">
     <%= f.time_field :end_time, class: 'form-control', placeholder: 'End Time' %>

@@ -1,6 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @concert.title %></h2>
+<p>
+  <strong>Title:</strong>
+  <%= @concert.title %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @concert.artist %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @concert.location %>
+</p>
+
+<p>
+  <strong>Seats:</strong>
+  <%= @concert.seats %>
+</p>
+
+<p>
+  <strong>Ticket Price:</strong>
+  <%= @concert.ticket_price %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @concert.start_time %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @concert.end_time %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @concert.date %>
+</p>
 
 <%= link_to 'Edit', edit_concert_path(@concert) %> |
 <%= link_to 'Back', concerts_path %>

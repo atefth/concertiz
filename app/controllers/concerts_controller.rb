@@ -69,6 +69,6 @@ class ConcertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concert_params
-      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :date)
+      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :ticket_price, :date)
     end
 end

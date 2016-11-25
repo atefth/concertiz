@@ -27,7 +27,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     respond_to do |format|
-      if @ticket.save
+      if @ticket.purchase ticket_params[:concert_id]
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
