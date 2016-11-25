@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Concertiz</title>
-    <%= csrf_meta_tags %>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Concertiz</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+	<%= render "nav/top", locals: {page: @page} %>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="page-header">
+			</div>
+			<%= yield %>
+		</div>
+	</div>
+	<%= render "nav/bot" %>
+</body>
 </html>
