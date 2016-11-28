@@ -1,5 +1,5 @@
 class ConcertsController < ApplicationController
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
+  before_action :set_concert, only: [:show, :edit, :update, :destroy, :book]
 
   # GET /concerts
   # GET /concerts.json
@@ -61,6 +61,24 @@ class ConcertsController < ApplicationController
     end
   end
 
+  def book
+    count = 0
+    quantity = concert_params[:quantity].to_i
+    if current_user.nil?
+      while count < quantity do
+        Ticket.create([concert_id: @concert.id, user_id: concert_params[:email]])
+        count += 1
+      end
+    else
+      while count < quantity do
+        Ticket.create([concert_id: @concert.id, user_id: current_user.id])
+        count += 1
+      end
+    end
+    flash[:notice] = "Tickets Booked Successfully!"
+    redirect_to '/home/index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_concert
@@ -69,6 +87,6 @@ class ConcertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concert_params
-      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :ticket_price, :date)
+      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :ticket_price, :date, :quantity)
     end
 end

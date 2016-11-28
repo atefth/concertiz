@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Search Concert
   get 'concerts/search', to: 'concerts#search', as: :concert_search
 
+  # Book Tickets
+  post 'concerts/:id/book', to: 'concerts#book', as: :book_ticket
+
   # Profile
   get 'users/:id/profile', to: 'users#show', as: :profile
   get 'users/:id/edit', to: 'users#edit', as: :profile_edit

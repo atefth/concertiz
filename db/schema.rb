@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(version: 20161128113159) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "concert_id"
     t.integer  "user_id"
+    t.string   "email"
     t.float    "price"
-    t.datetime "issued",     default: '2016-11-25 21:55:31', null: false
+    t.datetime "issued",     default: '2016-11-28 15:17:26', null: false
     t.datetime "expired"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
