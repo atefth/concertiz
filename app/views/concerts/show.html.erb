@@ -25,8 +25,8 @@
       <% @concert.tickets.group_by(&:user).each do |user, tickets| %>
       <tr>
         <td><%= tickets.length > 1 ? "#{tickets.first.id} - #{tickets.last.id}" : tickets.first.id %></td>
-        <td><%= "#{user.f_name} #{user.l_name}" %></td>
-        <td><%= user.location %></td>
+        <td><%= user.nil? == true ? "Annonymous User" : user.full_name %></td>
+        <td><%= user.nil? == true ? "Unknown" : user.location %></td>
         <td><%= tickets.count %></td>
         <td><%= tickets.length > 1 ? "#{tickets.first.created_at.strftime('%I:%M%p')} - #{tickets.last.created_at.strftime('%I:%M%p')}" : tickets.first.created_at.strftime('%I:%M%p') %></td>
       </tr>

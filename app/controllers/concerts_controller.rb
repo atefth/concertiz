@@ -65,18 +65,31 @@ class ConcertsController < ApplicationController
     count = 0
     quantity = concert_params[:quantity].to_i
     if current_user.nil?
-      while count < quantity do
-        Ticket.create([concert_id: @concert.id, user_id: concert_params[:email]])
-        count += 1
+      if concert_params[:email].nil? || concert_params[:email] == ""
+        flash[:notice] = "Please Provide An Email Address To Book Tickets!"
+        redirect_to '/home/concerts'
+      else
+        ActiveRecord::Base.transaction do
+          while count < quantity do
+            Ticket.create([concert_id: @concert.id, user_id: concert_params[:email]])
+            count += 1
+          end
+          TicketMailer.booking_confirmation(concert_params[:email], quantity, @concert).deliver_now
+        end
+        flash[:notice] = "Tickets Booked Successfully!"
+        redirect_to '/home/index'
       end
     else
-      while count < quantity do
-        Ticket.create([concert_id: @concert.id, user_id: current_user.id])
-        count += 1
+      ActiveRecord::Base.transaction do
+        while count < quantity do
+          Ticket.create([concert_id: @concert.id, user_id: current_user.id])
+          count += 1
+        end
+        TicketMailer.booking_confirmation(current_user.email, quantity, @concert).deliver_now
       end
+      flash[:notice] = "Tickets Booked Successfully!"
+      redirect_to '/home/index'
     end
-    flash[:notice] = "Tickets Booked Successfully!"
-    redirect_to '/home/index'
   end
 
   private
@@ -87,6 +100,6 @@ class ConcertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concert_params
-      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :ticket_price, :date, :quantity)
+      params.fetch(:concert, {}).permit(:title, :artist, :location, :start_time, :end_time, :seats, :ticket_price, :date, :quantity, :email)
     end
 end

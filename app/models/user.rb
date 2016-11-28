@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :tickets
   has_many :concerts, through: :tickets
 
+  def full_name
+    "#{self.f_name} #{self.l_name}"
+  end
+
   def admin?
   	self.has_role? :admin
   end
