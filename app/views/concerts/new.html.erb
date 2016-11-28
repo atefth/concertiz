@@ -1,5 +1,16 @@
-<h2 align="center">New Concert</h2>
+<div class="page-header">
+	<div class="row">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			<h2>New <small>Concert</small></h2>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<%= link_to 'Back', upcoming_concerts_path, class: 'btn btn-warning btn-block page-margin' %>
+		</div>
+	</div>
+</div>
 
-<%= render 'form', concert: @concert %>
-
-<%= link_to 'Back', concerts_path %>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<%= render 'form', concert: @concert %>
+	</div>
+</div>

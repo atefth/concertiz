@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'home/index', to: 'home#index', as: :home
   get 'home/concerts', to: 'home#concerts', as: :upcoming_concerts
 
+  # Search Concert
+  get 'concerts/search', to: 'concerts#search', as: :concert_search
+
   # Profile
   get 'users/:id/profile', to: 'users#show', as: :profile
   get 'users/:id/edit', to: 'users#edit', as: :profile_edit

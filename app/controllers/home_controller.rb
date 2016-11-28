@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
 	def concerts
 		@page = 'concerts'
+		@concerts = Concert::all()
 		render 'concerts'
 	end
 end

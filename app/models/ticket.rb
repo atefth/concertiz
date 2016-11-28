@@ -11,4 +11,5 @@ class Ticket < ApplicationRecord
     self.expired = expiry
     self.save!
   end
+
 end
