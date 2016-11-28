@@ -26,6 +26,10 @@ gem 'jbuilder', '~> 2.5'
 # Devise
 gem 'devise'
 
+# Rolify
+gem 'cancancan'
+gem 'rolify'
+
 # Paperclip
 gem 'paperclip'
 

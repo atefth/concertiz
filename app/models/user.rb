@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
@@ -7,4 +8,8 @@ class User < ApplicationRecord
 
   has_many :tickets
   has_many :concerts, through: :tickets
+
+  def admin?
+  	self.has_role? :admin
+  end
 end
