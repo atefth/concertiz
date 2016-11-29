@@ -1,0 +1,46 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+      <h2>All <small>Concerts</small></h2>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <%= link_to('Add New', new_concert_path, class: 'btn btn-success btn-block page-margin') %>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Location</th>
+        <th>Seats</th>
+        <th>Ticket Price</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Date</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @concerts.each do |concert| %>
+      <tr>
+        <td><%= concert.title %></td>
+        <td><%= concert.artist %></td>
+        <td><%= concert.location %></td>
+        <td><%= concert.seats %></td>
+        <td><%= concert.ticket_price %></td>
+        <td><%= concert.start_time %></td>
+        <td><%= concert.end_time %></td>
+        <td><%= concert.date %></td>
+        <td><%= link_to 'Show', concert %></td>
+        <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
+        <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

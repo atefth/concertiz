@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concert_id: 1
+  user_id: 1
+  price: 
+  issued: 2016-11-26 03:43:02
+  expired: 2016-11-26 03:43:02
+
+two:
+  concert_id: 1
+  user_id: 1
+  price: 
+  issued: 2016-11-26 03:43:02
+  expired: 2016-11-26 03:43:02

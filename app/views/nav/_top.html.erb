@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<a class="navbar-brand" href="<%= root_path %>">Concertiz</a>
+
+		<ul class="nav navbar-nav">
+			<li class="<%= 'active' if @page == 'home' %>">
+				<%= link_to('Home', home_path) %>
+			</li>
+			<li class="<%= 'active' if @page == 'concerts' %>">
+				<%= link_to('Upcoming Concerts', upcoming_concerts_path) %>
+			</li>
+		</ul>
+
+		<ul class="nav navbar-nav pull-right">
+			<% if user_signed_in? %>
+			<li class="<%= 'active' if @page == 'profile' %>">
+				<%= link_to('Profile', profile_path(current_user)) %>
+			</li>
+			<li>
+				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+			</li>
+			<% else %>
+			<li class="<%= 'active' if @page == 'login' %>">
+				<%= link_to('Login', new_user_session_path) %>
+			</li>
+			<% end %>
+		</ul>
+
+	</div>
+</nav>

@@ -1,0 +1,36 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+      <h2><%= @concert.title %> <small>Tickets</small></h2>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <%= link_to 'Back', upcoming_concerts_path, class: 'btn btn-warning btn-block page-margin' %>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Ticket #</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Quantity</th>
+        <th>Sold On</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @concert.tickets.group_by(&:user).each do |user, tickets| %>
+      <tr>
+        <td><%= tickets.length > 1 ? "#{tickets.first.id} - #{tickets.last.id}" : tickets.first.id %></td>
+        <td><%= user.nil? == true ? "Annonymous User" : user.full_name %></td>
+        <td><%= user.nil? == true ? "Unknown" : user.location %></td>
+        <td><%= tickets.count %></td>
+        <td><%= tickets.length > 1 ? "#{tickets.first.created_at.strftime('%I:%M%p')} - #{tickets.last.created_at.strftime('%I:%M%p')}" : tickets.first.created_at.strftime('%I:%M%p') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

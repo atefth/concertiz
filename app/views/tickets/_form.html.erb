@@ -1,0 +1,40 @@
+<%= form_for(ticket, html: {role: 'form', class: 'form-horizontal'}) do |f| %>
+<% if ticket.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+  <ul>
+    <% ticket.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :concert_id, class: 'sr-only' %>
+    <%= f.number_field :concert_id, class: 'form-control', placeholder: 'Concert Id' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :user_id, class: 'sr-only' %>
+    <%= f.number_field :user_id, class: 'form-control', placeholder: 'User Id' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= f.label :price, class: 'sr-only' %>
+    <%= f.text_field :price, class: 'form-control', placeholder: 'Price', disabled: true %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-6 col-lg-offset-3">
+  <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,71 @@
+<div class="row profile">
+	<div class="col-md-3">
+		<div class="profile-sidebar">
+			<!-- SIDEBAR USERPIC -->
+			<div class="profile-userpic">
+				<%= image_tag(@user.avatar, class: 'img-responsive') %>
+			</div>
+			<!-- END SIDEBAR USERPIC -->
+			<!-- SIDEBAR USER TITLE -->
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name">
+					<%= "#{@user.f_name} #{@user.l_name}" %>
+				</div>
+				<div class="profile-usertitle-job">
+					<%= @user.location %>
+				</div>
+			</div>
+			<!-- END SIDEBAR USER TITLE -->
+			<!-- SIDEBAR BUTTONS -->
+			<div class="profile-userbuttons">
+				<%= link_to('History', profile_history_path, class: 'btn btn-success btn-sm') %>
+				<%= link_to('Update', profile_edit_path, class: 'btn btn-warning btn-sm') %>
+			</div>
+			<!-- END SIDEBAR BUTTONS -->
+			<!-- SIDEBAR MENU -->
+			<div class="profile-usermenu">
+				<ul class="nav">
+					<li class="<%= 'active' if @tab == 'overview' %>">
+						<a href="<%= profile_path %>">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li class="<%= 'active' if @tab == 'settings' %>">
+							<a href="<%= profile_settings_path %>">
+								<i class="glyphicon glyphicon-user"></i>
+								Account Settings </a>
+							</li>
+							<li class="<%= 'active' if @tab == 'tickets' %>">
+								<a href="<%= profile_tickets_path %>">
+									<i class="glyphicon glyphicon-ok"></i>
+									Tickets </a>
+								</li>
+								<li class="<%= 'active' if @tab == 'concerts' %>">
+									<a href="<%= profile_concerts_path %>">
+										<i class="glyphicon glyphicon-flag"></i>
+										Concerts </a>
+									</li>
+								</ul>
+							</div>
+							<!-- END MENU -->
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="profile-content">
+							<% if !@tickets.blank? %>
+								<% for ticket in @tickets %>
+									<%= "#{ticket.concert.title} - #{ticket.price}" %>
+								<% end %>
+							<% end %>
+							<% if !@concerts.blank? %>
+								<% for concert in @concerts %>
+									<%= "#{concert.title} - #{concert.date}" %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
